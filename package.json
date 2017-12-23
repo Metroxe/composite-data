@@ -1,0 +1,22 @@
+{
+  "name": "composite-data",
+  "version": "0.1.0",
+  "description": "A library of data in a composite pattern to be used for validation Edit",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "test": "mocha -r ts-node/register tests/*"
+  },
+  "repository": "https://github.com/Metroxe/composite-data.git",
+  "author": "Christopher Powroznik <chrispow96@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.0.10",
+    "@types/mocha": "^2.2.44",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "ts-node": "^4.1.0",
+    "typescript": "^2.6.2"
+  }
+}
