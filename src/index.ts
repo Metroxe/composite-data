@@ -1,5 +1,5 @@
 import {Data, DataLeaf, DataComposite, DataMap} from "./model";
-import {Name, FirstName, MiddleName, LastName, FullName, FullNameMap} from "./identification/name"
+import {Name, FirstName, MiddleName, LastName, FullName, FullNameMap} from "./identification/Name"
 
 export {Data,
     DataLeaf,
