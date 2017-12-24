@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf /dist && tsc",
-    "test": "mocha -r ts-node/register tests/*"
+    "test": "mocha -r ts-node/register tests/*",
+    "release": "npm run build && npm publish"
   },
   "repository": "https://github.com/Metroxe/composite-data.git",
   "author": "Christopher Powroznik <chrispow96@gmail.com>",
