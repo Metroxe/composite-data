@@ -1,6 +1,7 @@
 import {DataMap} from "./DataMap";
+import {Observable} from "./Observer";
 
-interface Data {
+interface Data extends Observable{
     getValue(): any
     getComponent(): Data | DataMap
     set(value: object | any, force?: boolean): boolean | Promise<boolean>
