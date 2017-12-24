@@ -60,3 +60,6 @@ typings/
 # jetbrains
 .idea
 
+#builds
+dist
+

@@ -1,1 +1,13 @@
-console.log("entry point");
+import {Data, DataLeaf, DataComposite, DataMap} from "./model";
+import {Name, FirstName, MiddleName, LastName, FullNameMap} from "./identification/name"
+
+export {Data,
+    DataLeaf,
+    DataComposite,
+    DataMap,
+    Name,
+    FirstName,
+    MiddleName,
+    LastName,
+    FullNameMap
+}
