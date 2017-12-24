@@ -6,3 +6,6 @@ install:
  - yarn build
 script:
  - yarn test
+os:
+ - linux
+ - osx

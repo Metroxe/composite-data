@@ -1,6 +1,5 @@
 import {expect} from "chai";
-import {FirstName, FullNameMap, LastName, MiddleName} from "../dist";
-import {FullName} from "../dist/identification/name";
+import {FirstName, FullNameMap, LastName, MiddleName, FullName} from "../dist";
 
 describe('Name Tests, most general tests as well for the abstract classes', () => {
     let firstName = new FirstName();
