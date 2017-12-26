@@ -13,6 +13,6 @@ export {Data,
     LastName,
     FullNameMap,
     FullName,
-    Male
+    Male,
     Email
 }
