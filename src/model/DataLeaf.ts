@@ -27,18 +27,18 @@ abstract class DataLeaf<T> implements Data {
     public isValid(value?: T): boolean | Promise<boolean> {
         let v;
 
-        if (value)
+        if (value !== null && typeof value !== "undefined")
             v = value;
         else
             v = this.value;
 
-        if (v) {
+        if (v !== null && typeof v !== "undefined") {
             for (let func of this.validityArray) {
                 if (!func(v)) return false;
             }
-        }
+        } else return false;
 
-        return !!v
+        return true;
     }
 
     public updateObservers(): void {
@@ -73,6 +73,10 @@ abstract class DataLeaf<T> implements Data {
 
     protected static notEmpty(value : string) : boolean {
         return value.length > 0;
+    }
+
+    protected static booleanCheck(value : boolean) : boolean {
+        return (typeof(value) === "boolean");
     }
 }
 
