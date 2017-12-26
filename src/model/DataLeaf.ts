@@ -1,8 +1,10 @@
 import {Data} from "./";
+import {Observer} from "./Observer";
 
 abstract class DataLeaf<T> implements Data {
     protected value: T;
     protected abstract validityArray : Array<(value : T) => boolean>;
+    private observers : Set<Observer> = new Set<Observer>();
 
     public getValue(): T {
         return this.value;
@@ -13,13 +15,9 @@ abstract class DataLeaf<T> implements Data {
     }
 
     public set(value: T, force?: boolean): boolean | Promise<boolean> {
-        if (force) {
+        if (force || this.isValid(value)) {
             this.value = value;
-            return true;
-        }
-
-        if (this.isValid(value)) {
-            this.value = value;
+            this.updateObservers();
             return true;
         }
 
@@ -29,18 +27,28 @@ abstract class DataLeaf<T> implements Data {
     public isValid(value?: T): boolean | Promise<boolean> {
         let v;
 
-        if (value)
+        if (value !== null && typeof value !== "undefined")
             v = value;
         else
             v = this.value;
 
-        if (v) {
+        if (v !== null && typeof v !== "undefined") {
             for (let func of this.validityArray) {
                 if (!func(v)) return false;
             }
-        }
+        } else return false;
 
-        return !!v
+        return true;
+    }
+
+    public updateObservers(): void {
+        for (let observer of this.observers) {
+            observer.updateSelf(this.getValue());
+        }
+    }
+
+    public addObserver(observer: Observer): void {
+        this.observers.add(observer);
     }
 
     // fastest method
@@ -65,6 +73,10 @@ abstract class DataLeaf<T> implements Data {
 
     protected static notEmpty(value : string) : boolean {
         return value.length > 0;
+    }
+
+    protected static booleanCheck(value : boolean) : boolean {
+        return (typeof(value) === "boolean");
     }
 }
 
