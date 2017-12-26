@@ -1,8 +1,10 @@
 import {Data} from "./";
+import {Observer} from "./Observer";
 
 abstract class DataLeaf<T> implements Data {
     protected value: T;
     protected abstract validityArray : Array<(value : T) => boolean>;
+    private observers : Set<Observer> = new Set<Observer>();
 
     public getValue(): T {
         return this.value;
@@ -13,13 +15,9 @@ abstract class DataLeaf<T> implements Data {
     }
 
     public set(value: T, force?: boolean): boolean | Promise<boolean> {
-        if (force) {
+        if (force || this.isValid(value)) {
             this.value = value;
-            return true;
-        }
-
-        if (this.isValid(value)) {
-            this.value = value;
+            this.updateObservers();
             return true;
         }
 
@@ -41,6 +39,16 @@ abstract class DataLeaf<T> implements Data {
         }
 
         return !!v
+    }
+
+    public updateObservers(): void {
+        for (let observer of this.observers) {
+            observer.updateSelf(this.getValue());
+        }
+    }
+
+    public addObserver(observer: Observer): void {
+        this.observers.add(observer);
     }
 
     // fastest method
