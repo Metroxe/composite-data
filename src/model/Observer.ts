@@ -1,9 +1,9 @@
 interface Observer {
-    updateSelf() : void
+    updateSelf(newValue : any) : void
 }
 
 interface Observable {
-    updateObservers() : void
+    updateObservers() : void;
     addObserver(observer: Observer) : void;
 }
 

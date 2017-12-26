@@ -58,13 +58,14 @@ abstract class DataComposite<P extends DataMap> implements Data, Observer {
         return true;
     }
 
-    public updateSelf(): void {
+    public updateSelf(newValue? : any): void {
         this.updateObservers()
     }
 
     public updateObservers(): void {
+        let newValue = this.getValue();
         for (let observer of this.observers) {
-            observer.updateSelf();
+            observer.updateSelf(newValue);
         }
     }
 

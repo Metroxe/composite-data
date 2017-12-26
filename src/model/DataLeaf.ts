@@ -15,13 +15,9 @@ abstract class DataLeaf<T> implements Data {
     }
 
     public set(value: T, force?: boolean): boolean | Promise<boolean> {
-        if (force) {
+        if (force || this.isValid(value)) {
             this.value = value;
-            return true;
-        }
-
-        if (this.isValid(value)) {
-            this.value = value;
+            this.updateObservers();
             return true;
         }
 
@@ -47,7 +43,7 @@ abstract class DataLeaf<T> implements Data {
 
     public updateObservers(): void {
         for (let observer of this.observers) {
-            observer.updateSelf();
+            observer.updateSelf(this.getValue());
         }
     }
 
