@@ -7,6 +7,7 @@ import {SalutationEnum, Salutation} from "./identification/Salutation";
 import {States} from "./identification/States";
 import {Phone} from "./identification/Phone";
 import {City} from "./identification/City";
+import {Address} from "./identification/Address";
 
 export {Data,
     DataLeaf,
@@ -25,5 +26,6 @@ export {Data,
     Male,
     States,
     Phone,
-    City
+    City,
+    Address
 }
