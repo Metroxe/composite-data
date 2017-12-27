@@ -4,6 +4,7 @@ import {Male} from "./identification/Male";
 import {Email} from "./identification/Email";
 import {Password} from "./identification/Password";
 import {SalutationEnum, Salutation} from "./identification/Salutation";
+import {States} from "./identification/States";
 
 export {Data,
     DataLeaf,
@@ -19,5 +20,6 @@ export {Data,
     Password,
     SalutationEnum,
     Salutation,
-    Male
+    Male,
+    States
 }
