@@ -2,7 +2,8 @@ import {DataLeaf} from "../model/DataLeaf";
 
 class Email extends DataLeaf<string>{
     protected validityArray : Array<(value : string) => boolean> = [
-        Email.isEmail
+        Email.isEmail,
+        DataLeaf.notEmpty
     ];
 
     private static isEmail(value : string) : boolean {
