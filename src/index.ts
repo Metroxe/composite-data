@@ -3,6 +3,13 @@ import {Name, FirstName, MiddleName, LastName, FullName, FullNameMap} from "./id
 import {Male} from "./identification/Male";
 import {Email} from "./identification/Email";
 import {Dates} from "./identification/Date";
+import {Password} from "./identification/Password";
+import {SalutationEnum, Salutation} from "./identification/Salutation";
+import {States} from "./identification/States";
+import {Phone} from "./identification/Phone";
+import {City} from "./identification/City";
+import {Address} from "./identification/Address";
+import {Zipcode} from "./identification/Zipcode";
 
 export {Data,
     DataLeaf,
@@ -14,7 +21,16 @@ export {Data,
     LastName,
     FullNameMap,
     FullName,
+    Email,
+    Password,
+    SalutationEnum,
+    Salutation,
     Male,
     Email,
-    Dates
+    Dates,
+    States,
+    Phone,
+    City,
+    Address,
+    Zipcode
 }
