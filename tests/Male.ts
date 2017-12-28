@@ -1,7 +1,7 @@
 import {expect} from "chai";
 import {Male} from "../dist";
 
-describe('Name Tests, most general tests as well for the abstract classes', () => {
+describe('validity of Male', () => {
     let male = new Male();
 
     it('fail Male if 0', () => {
