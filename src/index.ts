@@ -9,7 +9,7 @@ import {States} from "./identification/States";
 import {Phone} from "./identification/Phone";
 import {City} from "./identification/City";
 import {Address} from "./identification/Address";
-import {Zipcode} from "./identification/Zipcode";
+import {ZipCode} from "./identification/Zipcode";
 
 export {Data,
     DataLeaf,
@@ -31,5 +31,5 @@ export {Data,
     Phone,
     City,
     Address,
-    Zipcode
+    ZipCode
 }

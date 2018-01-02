@@ -1,9 +1,9 @@
-import {DataLeaf} from "../model/DataLeaf";
+import {DataLeaf} from "../model";
 
-class Zipcode extends DataLeaf<string>{
+class ZipCode extends DataLeaf<string>{
     protected validityArray : Array<(value : string) => boolean> = [
         DataLeaf.notEmpty,
-        Zipcode.checkZip
+        ZipCode.checkZip
     ];
 
     private static checkZip(value : string) : boolean{
@@ -13,4 +13,4 @@ class Zipcode extends DataLeaf<string>{
     }
 }
 
-export {Zipcode}
+export {ZipCode}
