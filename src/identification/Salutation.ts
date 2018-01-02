@@ -1,4 +1,4 @@
-import {DataLeaf} from "../model/DataLeaf";
+import {DataLeaf} from "../model";
 
 enum SalutationEnum {
     Mr = "MR",
@@ -43,7 +43,7 @@ class Salutation extends DataLeaf<SalutationEnum>{
 
     /* Check if user is male or female based on salutation */
 
-    public isMaleOrFemale() : boolean {
+    public isMale() : boolean {
         return this.value === SalutationEnum.Mr;
     }
 }
