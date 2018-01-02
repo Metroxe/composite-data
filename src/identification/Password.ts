@@ -10,7 +10,6 @@ class Password extends DataLeaf<string>{
         return value.length >= 6;
     }
 
-
     /* Checking for strong passwords */
 
     public containsNumbers() : boolean {
