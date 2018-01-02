@@ -11,7 +11,10 @@
   "repository": "https://github.com/Metroxe/composite-data.git",
   "author": "Christopher Powroznik <chrispow96@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@types/moment": "^2.13.0",
+    "moment": "^2.20.1"
+  },
   "devDependencies": {
     "@types/chai": "^4.0.10",
     "@types/mocha": "^2.2.44",

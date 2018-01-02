@@ -2,7 +2,7 @@ import {Data, DataLeaf, DataComposite, DataMap} from "./model";
 import {Name, FirstName, MiddleName, LastName, FullName, FullNameMap} from "./identification/Name";
 import {Male} from "./identification/Male";
 import {Email} from "./identification/Email";
-import {Dates} from "./identification/Date";
+import {DateOfBirth} from "./identification/DateOfBirth";
 import {Password} from "./identification/Password";
 import {SalutationEnum, Salutation} from "./identification/Salutation";
 import {States} from "./identification/States";
@@ -26,7 +26,7 @@ export {Data,
     SalutationEnum,
     Salutation,
     Male,
-    Dates,
+    DateOfBirth,
     States,
     Phone,
     City,
