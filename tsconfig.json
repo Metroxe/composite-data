@@ -6,7 +6,10 @@
     "outDir": "./dist",
     "strict": true,
     "strictNullChecks": false,
-    "sourceMap": true
+    "sourceMap": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true
   },
   "include": [
     "./src/"

@@ -7,7 +7,8 @@
     "build": "rm -rf /dist && tsc",
     "test": "mocha -r ts-node/register tests/*",
     "release": "npm run build && npm publish",
-    "clean": "rm -rf /dist && rm -rf node_modules"
+    "clean": "rm -rf /dist && rm -rf node_modules",
+    "watch": "tsc -w"
   },
   "repository": "https://github.com/Metroxe/composite-data.git",
   "author": "Christopher Powroznik <chrispow96@gmail.com>",
