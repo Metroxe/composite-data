@@ -21,7 +21,7 @@ describe('Tests validity of salutation', () => {
 
     it('Checking if male or female based on salutation', () => {
         salutation.set("MR");
-        expect(salutation.isMaleOrFemale(), "should return true").to.be.true;
+        expect(salutation.isMale(), "should return true").to.be.true;
     });
 
 });

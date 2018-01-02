@@ -6,12 +6,16 @@
   "scripts": {
     "build": "rm -rf /dist && tsc",
     "test": "mocha -r ts-node/register tests/*",
-    "release": "npm run build && npm publish"
+    "release": "npm run build && npm publish",
+    "clean": "rm -rf /dist && rm -rf node_modules",
+    "watch": "tsc -w"
   },
   "repository": "https://github.com/Metroxe/composite-data.git",
   "author": "Christopher Powroznik <chrispow96@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "moment": "^2.20.1"
+  },
   "devDependencies": {
     "@types/chai": "^4.0.10",
     "@types/mocha": "^2.2.44",
