@@ -22,7 +22,7 @@ abstract class DataComposite<P extends DataMap> implements Data, Observer {
         return obj;
     }
 
-    public getComponent() : DataMap {
+    public getComponent() : P {
         return this.dataMap;
     }
 
