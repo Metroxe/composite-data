@@ -1,6 +1,6 @@
 {
   "name": "composite-data",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A library of data in a composite pattern to be used for validation",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
