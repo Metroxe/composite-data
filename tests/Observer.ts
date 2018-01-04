@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import {FirstName, FullNameMap, LastName, MiddleName, FullName} from "../dist";
-import {Observer} from "../dist/model/Observer";
+import {Observer} from "../dist";
 
 describe('Observer tests', () => {
 
