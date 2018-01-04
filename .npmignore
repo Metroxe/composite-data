@@ -2,3 +2,4 @@ src/
 tests/
 .travis.yml
 yarn-error.log
+.idea
