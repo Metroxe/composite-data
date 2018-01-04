@@ -3,8 +3,12 @@ import {Observer} from "./Observer";
 
 abstract class DataLeaf<T> implements Data {
     protected value: T;
-    protected abstract validityArray : Array<(value : T) => boolean>;
-    private observers : Set<Observer> = new Set<Observer>();
+    protected abstract validityArray: Array<(value: T) => boolean>;
+    private observers: Set<Observer> = new Set<Observer>();
+
+    public constructor(value?: T) {
+        if (value !== undefined || value !== null) this.value = value;
+    }
 
     public getValue(): T {
         return this.value;
@@ -53,7 +57,7 @@ abstract class DataLeaf<T> implements Data {
 
     // fastest method
     // https://stackoverflow.com/questions/4434076/best-way-to-alphanumeric-check-in-javascript
-    protected static isAlphaNumeric(value : string) {
+    protected static isAlphaNumeric(value: string) {
         let code, i, len;
 
         for (i = 0, len = value.length; i < len; i++) {
@@ -67,15 +71,15 @@ abstract class DataLeaf<T> implements Data {
         return true;
     };
 
-    protected static noWhiteSpace(value: string) : boolean {
+    protected static noWhiteSpace(value: string): boolean {
         return !(value.indexOf(' ') > 0);
     }
 
-    protected static notEmpty(value : string) : boolean {
+    protected static notEmpty(value: string): boolean {
         return value.length > 0;
     }
 
-    protected static booleanCheck(value : boolean) : boolean {
+    protected static booleanCheck(value: boolean): boolean {
         return (typeof(value) === "boolean");
     }
 }
