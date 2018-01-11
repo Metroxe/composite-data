@@ -1,4 +1,4 @@
-import {DataLeaf} from "../model/DataLeaf";
+import {DataLeaf} from "../model";
 
 class Email extends DataLeaf<string>{
     protected validityArray : Array<(value : string) => boolean> = [

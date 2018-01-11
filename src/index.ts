@@ -11,6 +11,7 @@ import {Phone} from "./identification/Phone";
 import {City} from "./identification/City";
 import {Address} from "./identification/Address";
 import {ZipCode} from "./identification/Zipcode";
+import {GenericString} from "./generic/GenericString"
 
 export {Data,
     DataLeaf,
@@ -34,5 +35,6 @@ export {Data,
     Phone,
     City,
     Address,
-    ZipCode
+    ZipCode,
+    GenericString
 }
