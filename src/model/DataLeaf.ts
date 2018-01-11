@@ -18,13 +18,16 @@ abstract class DataLeaf<T> implements Data {
         return this;
     }
 
-    public set(value: T, force?: boolean): boolean | Promise<boolean> {
-        if (force || this.isValid(value)) {
+    public set(value: T | any, force?: boolean): boolean | Promise<boolean> {
+        let valid : boolean | Promise<boolean> = this.isValid(value);
+        if (force || valid) {
             this.value = value;
             this.updateObservers();
-            return true;
+            if (force) {
+                return valid
+            } else
+                return true;
         }
-
         return false;
     }
 
