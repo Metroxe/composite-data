@@ -1,10 +1,10 @@
 import {expect} from "chai";
 import {Password} from "../dist";
 
-describe('Tests validity of passwords', () => {
-    let password = new Password();
+describe("Tests validity of passwords", () => {
+    const password: Password = new Password();
 
-    it('Checking the isValid of password', () => {
+    it("Checking the isValid of password", () => {
         expect(password.isValid("123456"), "123456 should return true").to.be.true;
         expect(password.isValid("samuraiJack11"), "samuraiJack11 should return true").to.be.true;
         expect(password.isValid("!@#$%^&*()"), "!@#$%^&*() should return true").to.be.true;
@@ -13,7 +13,7 @@ describe('Tests validity of passwords', () => {
         expect(password.isValid("with$pecialChars"), "with$pecialChars should return true").to.be.true;
     });
 
-    it('Checking ths isValid of incorrect passwords', () => {
+    it("Checking ths isValid of incorrect passwords", () => {
         expect(password.isValid("12345"), "12345 should return false").to.be.false;
         expect(password.isValid("@#$%"), "@#$% should return false").to.be.false;
         expect(password.isValid("a1@"), "a1@ should return false").to.be.false;
@@ -22,7 +22,7 @@ describe('Tests validity of passwords', () => {
         expect(password.isValid("cut()"), "cut() should return false").to.be.false;
     });
 
-    it('Checking ths isValid of strong passwords', () => {
+    it("Checking ths isValid of strong passwords", () => {
         password.set("asdfgH1%");
         expect(password.isStrongPassword(), "should return true").to.be.true;
         password.set("@3Pl");
@@ -33,7 +33,7 @@ describe('Tests validity of passwords', () => {
         expect(password.isStrongPassword(), "should return true").to.be.true;
     });
 
-    it('Checking ths isValid of incorrect strong passwords', () => {
+    it("Checking ths isValid of incorrect strong passwords", () => {
         password.set("aaaaaaaaa");
         expect(password.isStrongPassword(), "should return false").to.be.false;
         password.set("7777777");

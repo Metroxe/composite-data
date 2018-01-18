@@ -1,15 +1,16 @@
 import {DataLeaf} from "../model";
 
-class States extends DataLeaf<string> {
+class State extends DataLeaf<string> {
     protected validityArray: Array<(value: string) => boolean> = [
         DataLeaf.notEmpty,
-        States.checkEnumStates
+        State.checkEnumStates,
     ];
 
     private static checkEnumStates(value: statesEnum): boolean {
-        let capState = value.toUpperCase();
+        const capState: string = value.toUpperCase();
 
-        for (let usState in statesEnum) {
+        let usState: string;
+        for (usState in statesEnum) {
             if (capState === usState) {
                 return true;
             }
@@ -76,5 +77,4 @@ enum statesEnum {
     WY = "WY",
 }
 
-
-export {statesEnum, States}
+export {statesEnum, State};
