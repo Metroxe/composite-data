@@ -42,4 +42,13 @@ describe("Name Tests, most general tests as well for the abstract classes", () =
         expect(fullName.isValid(), "check valid on self").to.be.true;
         expect(fullName.isValid(fullNameMap), "check valid on map").to.be.true;
     });
+
+    it("optional parameters are still valid if not present", () => {
+        const fullNameMap: IFullNameMap = {};
+        const fullName: FullName = new FullName();
+        expect(fullName.set(fullNameMap), "adding Full Name Map").to.be.true;
+        expect(fullName.getComponent()).to.be.equal(fullNameMap);
+        expect(fullName.isValid(), "check valid on self").to.be.true;
+        expect(fullName.isValid(fullNameMap), "check valid on map").to.be.true;
+    });
 });
