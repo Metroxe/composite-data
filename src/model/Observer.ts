@@ -1,5 +1,5 @@
 interface Observer {
-    updateSelf(newValue : any) : void
+    updateSelf(newValue? : any) : void
 }
 
 interface Observable {
