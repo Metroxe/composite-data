@@ -1,20 +1,20 @@
 import {expect} from "chai";
-import {FirstName, FullNameMap, LastName, MiddleName, FullName} from "../dist";
-import {Observer} from "../dist";
+import {FirstName, LastName, MiddleName} from "../dist";
+import {IObserver} from "../dist";
 
-describe('Observer tests', () => {
+describe("Observer tests", () => {
 
-    it('dataLeaf observer test', () => {
-        let firstName = new FirstName();
-        let middleName = new MiddleName();
-        let lastName = new LastName();
+    it("dataLeaf observer test", () => {
+        const firstName: FirstName = new FirstName();
+        const middleName: MiddleName = new MiddleName();
+        const lastName: LastName = new LastName();
 
         firstName.set("Christopher");
         middleName.set("Vinson");
         lastName.set("Powroznik");
 
-        let firstNameObserver1 = new MockObserver();
-        let firstNameObserver2 = new MockObserver();
+        const firstNameObserver1: MockObserver = new MockObserver();
+        const firstNameObserver2: MockObserver = new MockObserver();
 
         firstName.addObserver(firstNameObserver1);
         expect(firstNameObserver1.count).to.be.equal(0);
@@ -35,14 +35,14 @@ describe('Observer tests', () => {
     });
 });
 
-class MockObserver implements Observer{
-    public count : number;
+class MockObserver implements IObserver {
+    public count: number;
 
     constructor() {
         this.count = 0;
     }
 
-    updateSelf(newValue : any) : void {
+    public updateSelf(newValue: any): void {
         this.count++;
     }
 }

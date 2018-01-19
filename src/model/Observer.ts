@@ -1,10 +1,10 @@
-interface Observer {
-    updateSelf(newValue : any) : void
+interface IObserver {
+    updateSelf(newValue?: any): void;
 }
 
-interface Observable {
-    updateObservers() : void;
-    addObserver(observer: Observer) : void;
+interface IObservable {
+    updateObservers(): void;
+    addObserver(observer: IObserver): void;
 }
 
-export {Observer, Observable}
+export {IObserver, IObservable};

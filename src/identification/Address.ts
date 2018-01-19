@@ -1,16 +1,17 @@
-import {DataLeaf} from "../model/DataLeaf";
+import {DataLeaf} from "../model";
 
-class Address extends DataLeaf<string>{
-    protected validityArray : Array<(value : string) => boolean> = [
+class Address extends DataLeaf<string> {
+
+    protected validityArray: Array<(value: string) => boolean> = [
         DataLeaf.notEmpty,
-        Address.checkAddress
+        Address.checkAddress,
     ];
 
-    private static checkAddress(value : string) : boolean{
-        let addressRegex = /^[A-Za-z0-9# .-]+$/;
+    private static addressRegex: RegExp = /^[A-Za-z0-9# .-]+$/;
 
-        return addressRegex.test(value)
+    private static checkAddress(value: string): boolean {
+        return Address.addressRegex.test(value);
     }
 }
 
-export {Address}
+export {Address};
