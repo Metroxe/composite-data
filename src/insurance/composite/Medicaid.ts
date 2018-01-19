@@ -1,6 +1,6 @@
 import {BenefitIdentificationNumber} from "../leaf/BenefitIdentificationNumber";
 import {GroupIdentification} from "../leaf/GroupIdentification";
-import {InsuranceIdentifcation} from "../leaf/InsuranceIdentification";
+import {InsuranceIdentification} from "../leaf/InsuranceIdentification";
 import {HealthInsurance, IHealthInsuranceMap} from "./HealthInsurance";
 import {PrimaryCareNetwork} from "../leaf/PrimaryCareNetwork";
 
@@ -10,7 +10,7 @@ interface IMedicaidMap extends IHealthInsuranceMap {
     primaryCareNetwork: PrimaryCareNetwork;
     benefitIdentificationNumber: BenefitIdentificationNumber;
     groupIdentification: GroupIdentification;
-    insuranceIdentification: InsuranceIdentifcation;
+    insuranceIdentification: InsuranceIdentification;
 }
 
 export {IMedicaidMap, Medicaid};

@@ -3,7 +3,7 @@ import {CarrierName} from "./leaf/CarrierName";
 import {PrimaryCareNetwork} from "./leaf/PrimaryCareNetwork";
 import {GroupIdentification} from "./leaf/GroupIdentification";
 import {MedicareIdentification} from "./leaf/MedicareIdentifcation";
-import {InsuranceIdentifcation} from "./leaf/InsuranceIdentification";
+import {InsuranceIdentification} from "./leaf/InsuranceIdentification";
 import {BenefitIdentificationNumber} from "./leaf/BenefitIdentificationNumber";
 
 // maps
@@ -27,7 +27,7 @@ export {
     PrimaryCareNetwork,
     GroupIdentification,
     MedicareIdentification,
-    InsuranceIdentifcation,
+    InsuranceIdentification,
     BenefitIdentificationNumber,
     IPrivateHealthInsuranceMap,
     IMedicaidMap,

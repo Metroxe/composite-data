@@ -1,10 +1,10 @@
 import {HealthInsurance, IHealthInsuranceMap} from "./HealthInsurance";
-import {InsuranceIdentifcation} from "../leaf/InsuranceIdentification";
+import {InsuranceIdentification} from "../leaf/InsuranceIdentification";
 
 class OtherHealthInsurance extends HealthInsurance<IOtherHealthInsuranceMap> {}
 
 interface IOtherHealthInsuranceMap extends IHealthInsuranceMap {
-    insuranceIdentification: InsuranceIdentifcation;
+    insuranceIdentification: InsuranceIdentification;
 }
 
 export {IOtherHealthInsuranceMap, OtherHealthInsurance};

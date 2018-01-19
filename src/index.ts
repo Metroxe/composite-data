@@ -12,6 +12,7 @@ import {Salutation, SalutationEnum} from "./identification/Salutation";
 import {State} from "./identification/State";
 import {ZipCode} from "./identification/Zipcode";
 import {IObservable, IObserver} from "./model";
+import {CarrierName, PrimaryCareNetwork, GroupIdentification, MedicareIdentification, InsuranceIdentification, BenefitIdentificationNumber, IPrivateHealthInsuranceMap, IMedicaidMap, IMedicareAdvantageMap, IMedicareMap, IOtherHealthInsuranceMap, ITricareMap, PrivateHealthInsurance, Medicaid, MedicareAdvantage, Medicare, OtherHealthInsurance, Tricare} from "./insurance";
 
 export {IData,
     DataLeaf,
@@ -37,4 +38,22 @@ export {IData,
     Address,
     ZipCode,
     GenericString,
+    CarrierName,
+    PrimaryCareNetwork,
+    GroupIdentification,
+    MedicareIdentification,
+    InsuranceIdentification,
+    BenefitIdentificationNumber,
+    IPrivateHealthInsuranceMap,
+    IMedicaidMap,
+    IMedicareAdvantageMap,
+    IMedicareMap,
+    IOtherHealthInsuranceMap,
+    ITricareMap,
+    PrivateHealthInsurance,
+    Medicaid,
+    MedicareAdvantage,
+    Medicare,
+    OtherHealthInsurance,
+    Tricare,
 };
