@@ -1,29 +1,30 @@
-import {Data, DataLeaf, DataComposite, DataMap} from "./model";
-import {Observer, Observable} from "./model";
-import {Name, FirstName, MiddleName, LastName, FullName, FullNameMap} from "./identification/Name";
-import {Male} from "./identification/Male";
-import {Email} from "./identification/Email";
-import {DateOfBirth} from "./identification/DateOfBirth";
-import {Password} from "./identification/Password";
-import {SalutationEnum, Salutation} from "./identification/Salutation";
-import {States} from "./identification/States";
-import {Phone} from "./identification/Phone";
-import {City} from "./identification/City";
+import {DataComposite, DataLeaf, IData, IDataMap} from "./model";
+import {GenericString} from "./generic/GenericString";
 import {Address} from "./identification/Address";
+import {City} from "./identification/City";
+import {DateOfBirth} from "./identification/DateOfBirth";
+import {Email} from "./identification/Email";
+import {Male} from "./identification/Male";
+import {FirstName, FullName, IFullNameMap, LastName, MiddleName, Name} from "./identification/Name";
+import {Password} from "./identification/Password";
+import {Phone} from "./identification/Phone";
+import {Salutation, SalutationEnum} from "./identification/Salutation";
+import {State} from "./identification/State";
 import {ZipCode} from "./identification/Zipcode";
-import {GenericString} from "./generic/GenericString"
+import {IObservable, IObserver} from "./model";
+import {CarrierName, PrimaryCareNetwork, GroupIdentification, MedicareIdentification, InsuranceIdentification, BenefitIdentificationNumber, IPrivateHealthInsuranceMap, IMedicaidMap, IMedicareAdvantageMap, IMedicareMap, IOtherHealthInsuranceMap, ITricareMap, PrivateHealthInsurance, Medicaid, MedicareAdvantage, Medicare, OtherHealthInsurance, Tricare} from "./insurance";
 
-export {Data,
+export {IData,
     DataLeaf,
     DataComposite,
-    DataMap,
-    Observer,
-    Observable,
+    IDataMap,
+    IObserver,
+    IObservable,
     Name,
     FirstName,
     MiddleName,
     LastName,
-    FullNameMap,
+    IFullNameMap,
     FullName,
     Email,
     Password,
@@ -31,10 +32,28 @@ export {Data,
     Salutation,
     Male,
     DateOfBirth,
-    States,
+    State,
     Phone,
     City,
     Address,
     ZipCode,
-    GenericString
-}
+    GenericString,
+    CarrierName,
+    PrimaryCareNetwork,
+    GroupIdentification,
+    MedicareIdentification,
+    InsuranceIdentification,
+    BenefitIdentificationNumber,
+    IPrivateHealthInsuranceMap,
+    IMedicaidMap,
+    IMedicareAdvantageMap,
+    IMedicareMap,
+    IOtherHealthInsuranceMap,
+    ITricareMap,
+    PrivateHealthInsurance,
+    Medicaid,
+    MedicareAdvantage,
+    Medicare,
+    OtherHealthInsurance,
+    Tricare,
+};

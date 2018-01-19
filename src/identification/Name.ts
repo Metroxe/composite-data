@@ -1,15 +1,15 @@
-import {DataLeaf, DataComposite} from "../";
-import {DataMap} from "../model";
+import {DataComposite, DataLeaf} from "../";
+import {IDataMap} from "../model";
 
 abstract class Name extends DataLeaf<string> {
-    protected validityArray : Array<(value : string) => boolean> = [
+    protected validityArray: Array<(value: string) => boolean> = [
         DataLeaf.noWhiteSpace,
         DataLeaf.isAlphaNumeric,
         Name.hasNumber,
-        DataLeaf.notEmpty
+        DataLeaf.notEmpty,
     ];
 
-    protected static hasNumber(value : string) : boolean {
+    protected static hasNumber(value: string): boolean {
         return !(/\d/.test(value));
     }
 }
@@ -17,12 +17,12 @@ abstract class Name extends DataLeaf<string> {
 class FirstName extends Name {}
 class MiddleName extends Name {}
 class LastName extends Name {}
-class FullName extends DataComposite<FullNameMap> {}
+class FullName extends DataComposite<IFullNameMap> {}
 
-interface FullNameMap extends DataMap {
-    firstName? : FirstName
-    middleName? : MiddleName
-    lastName? : LastName
+interface IFullNameMap extends IDataMap {
+    firstName?: FirstName;
+    lastName?: LastName;
+    middleName?: MiddleName;
 }
 
-export {Name,  FirstName, MiddleName, LastName, FullNameMap, FullName}
+export {Name,  FirstName, MiddleName, LastName, IFullNameMap, FullName};

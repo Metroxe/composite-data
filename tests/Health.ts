@@ -1,3 +1,3 @@
-describe('health check', () => {
-    it('should always pass', () => {});
+describe("health check", () => {
+    it("should always pass", () => {/**/});
 });

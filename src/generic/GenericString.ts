@@ -1,14 +1,15 @@
 import {DataLeaf} from "../model";
 
 class GenericString extends DataLeaf<string> {
-    validityArray: Array<(value: string) => boolean> = [
-        GenericString.isString
+
+    protected validityArray: Array<(value: string) => boolean> = [
+        GenericString.isString,
     ];
 
-    private static isString(value: string) {
-        return (typeof value === "string")
+    private static isString(value: string): boolean {
+        return (typeof value === "string");
     }
 
 }
 
-export {GenericString}
+export {GenericString};

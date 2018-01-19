@@ -1,16 +1,17 @@
-import {DataLeaf} from "../model/DataLeaf";
+import {DataLeaf} from "../model";
 
-class City extends DataLeaf<string>{
-    protected validityArray : Array<(value : string) => boolean> = [
+class City extends DataLeaf<string> {
+
+    protected validityArray: Array<(value: string) => boolean> = [
         DataLeaf.notEmpty,
-        City.checkCity
+        City.checkCity,
     ];
 
-    private static checkCity(value : string) : boolean{
-        let cityRegex = /^[a-zA-Z\s-]+$/;
+    private static cityRegex: RegExp = /^[a-zA-Z\s-]+$/;
 
-        return cityRegex.test(value)
+    private static checkCity(value: string): boolean {
+        return City.cityRegex.test(value);
     }
 }
 
-export {City}
+export {City};

@@ -1,7 +1,7 @@
-import {DataMap} from "./DataMap"
-import {Data} from "./Data"
-import {DataLeaf} from "./DataLeaf"
-import {DataComposite} from "./DataComposite"
-import {Observer, Observable} from "./Observer"
+import {DataComposite} from "./DataComposite";
+import {DataLeaf} from "./DataLeaf";
+import {IData} from "./IData";
+import {IDataMap} from "./IDataMap";
+import {IObservable, IObserver} from "./Observer";
 
-export {Data, DataMap, DataComposite, DataLeaf, Observer, Observable}
+export {IData, IDataMap, DataComposite, DataLeaf, IObserver, IObservable};
