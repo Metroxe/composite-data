@@ -1,9 +1,9 @@
-import {DataLeaf} from "../../index";
+import {GenericString} from "../../";
 
-class PrimaryCareNetwork extends DataLeaf<string> {
+class PrimaryCareNetwork extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
-        DataLeaf.isAlphaNumeric,
-        DataLeaf.notEmpty,
+        GenericString.isAlphaNumeric,
+        GenericString.notEmpty,
         PrimaryCareNetwork.minimumLength,
     ];
 

@@ -1,11 +1,11 @@
-import {DataLeaf} from "../model";
+import {GenericString} from "../";
 
-class City extends DataLeaf<string> {
+class City extends GenericString {
 
     protected validityArray: Array<(value: string) => boolean> = [
-        DataLeaf.notEmpty,
+        GenericString.notEmpty,
         City.checkCity,
-    ];
+    ].concat(super.getParentValidityArray());
 
     private static cityRegex: RegExp = /^[a-zA-Z\s-]+$/;
 

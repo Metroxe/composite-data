@@ -13,7 +13,7 @@ describe("Generic Number Tests", () => {
             expect(genericNumber.set(i), i.toString()).to.be.true;
         }
 
-        for (let i: number = -0.01; i < 0.01; i += 0.000001) {
+        for (let i: number = -0.01; i < 0.01; i += 0.001) {
             expect(genericNumber.set(i), i.toString()).to.be.true;
         }
     });

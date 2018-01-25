@@ -1,13 +1,13 @@
-import {DataComposite, DataLeaf} from "../";
+import {DataComposite, GenericString} from "../";
 import {IDataMap} from "../model";
 
-abstract class Name extends DataLeaf<string> {
+abstract class Name extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
-        DataLeaf.noWhiteSpace,
-        DataLeaf.isAlphaNumeric,
+        GenericString.noWhiteSpace,
+        GenericString.isAlphaNumeric,
         Name.hasNumber,
-        DataLeaf.notEmpty,
-    ];
+        GenericString.notEmpty,
+    ].concat(super.getParentValidityArray());
 
     protected static hasNumber(value: string): boolean {
         return !(/\d/.test(value));

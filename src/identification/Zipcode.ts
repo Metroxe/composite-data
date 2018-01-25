@@ -1,11 +1,12 @@
-import {DataLeaf} from "../model";
+import {GenericString} from "../";
 
-class ZipCode extends DataLeaf<string> {
+class ZipCode extends GenericString {
 
     protected validityArray: Array<(value: string) => boolean> = [
-        DataLeaf.notEmpty,
+        GenericString.notEmpty,
         ZipCode.checkZip,
-    ];
+    ].concat(super.getParentValidityArray());
+
     private static zipRegex: RegExp = /^\d{5}(-\d{4})?$/;
 
     private static checkZip(value: string): boolean {
