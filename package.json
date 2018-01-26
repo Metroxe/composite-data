@@ -6,10 +6,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && node_modules/.bin/tsc",
-    "test": "mocha -r ts-node/register tests/*",
+    "test": "node_modules/.bin/nyc node_modules/.bin/mocha --opts ./mocha.opts",
     "release": "npm run build && npm publish",
     "clean": "rm -rf dist && rm -rf node_modules",
-    "watch": "node_modules/.bin/tsc -w",
+    "watch": "node_modules/.bin/concurrently \"node_modules/.bin/nodemon --config nodemon.json\" \"yarn run browser-watch\"",
+    "browser-watch": "node_modules/.bin/browser-sync start --server --files coverage/lcov-report --serveStatic coverage/lcov-report",
     "lint": "node_modules/.bin/tslint -c tslint.json 'src/**/*.ts' 'tests/**/*.ts'"
   },
   "repository": "https://github.com/Metroxe/composite-data.git",
@@ -21,8 +22,12 @@
   "devDependencies": {
     "@types/chai": "^4.0.10",
     "@types/mocha": "^2.2.44",
+    "browser-sync": "^2.23.6",
     "chai": "^4.1.2",
+    "concurrently": "^3.5.1",
     "mocha": "^4.0.1",
+    "nodemon": "^1.14.11",
+    "nyc": "^11.4.1",
     "ts-node": "^4.1.0",
     "tslint": "^5.9.1",
     "typescript": "^2.6.2"

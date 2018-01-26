@@ -1,0 +1,11 @@
+{
+  "watch": [
+    "src",
+    "tests"
+  ],
+  "ext": "ts tsx js",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "yarn run build && yarn run test && yarn run lint",
+  "delay": "100",
+  "verbose": false
+}

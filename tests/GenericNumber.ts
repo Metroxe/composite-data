@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {GenericNumber} from "../src";
+import {GenericNumber} from "../dist";
 
 describe("Generic Number Tests", () => {
     const genericNumber: GenericNumber = new GenericNumber();
