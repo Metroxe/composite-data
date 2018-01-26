@@ -14,3 +14,5 @@ package-lock.json
 .nycrc
 mocha.opts
 nodemon.json
+diagrams/
+README.md
