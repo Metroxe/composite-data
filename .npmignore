@@ -4,3 +4,13 @@ tests/
 yarn-error.log
 .idea
 .map
+coverage/
+.nyc_output/
+tsconfig.json
+tslint.json
+yarn.lock
+yarn-error.log
+package-lock.json
+.nycrc
+mocha.opts
+nodemon.json
