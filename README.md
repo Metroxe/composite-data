@@ -22,28 +22,28 @@ npm install composite-data --save
 ## How To Use This Library
 There are two types of objects that can be instantiated, **DataLeafs and DataComposites**, as well as two interfaces, **IObserver and IObservable**. Each of these are covered below.
 
-###DataLeaf
+### DataLeaf
 The DataLeaf is the purest form of information, it sits at the bottom level of the composite, and holds a single object. DataLeaf Also uses a template for the value that it contains, this type for the value is defined by `T`. Also it is important to note that each dataLeaf extends the IObservable Interface
 
-####`getValue(): T`
+#### `getValue(): T`
 This will return the current value for the data object. So if it is a string then it will return the string for the leaf. If there is no value it will return `undefined`.
 
-####`getComponent(): DataLeaf<T>`
+#### `getComponent(): DataLeaf<T>`
 This will return the object itself, over very useful for iteration of multiple different dataLeaves.
 
-####`set(value: T | any, force?: boolean): boolean | Promise<boolean>`
+#### `set(value: T | any, force?: boolean): boolean | Promise<boolean>`
 To change the value held by the leaf, use this method. value is the data you want to replace and the function will always return true or false based on if the value passed validation. In some cases where an api call is needed to validate or a promise/callback is involved in the validation, then a promise that returns a boolean will be returned.
 
-####`updateObservers(): void`
+#### `updateObservers(): void`
 This will update all observers of the current value held.
 
-####`addObserver(observer: IObserver): void`
+#### `addObserver(observer: IObserver): void`
 Adds another observer to current instance of the DataLeaf.
 
-###DataComposite
+### DataComposite
 The DataObserver is a collection of other `IData` (other `DataComposites` or `DataLeaves`) and are organized via a structure define the template variable `P` which is of type `IDataMap`
 
-####`getValue(): object`
+#### `getValue(): object`
 This will return a JSON object of all the children of this data composite. An example of Name is below
 
 ```typescript
@@ -68,7 +68,7 @@ console.log(fullNameValue);
 }
 ```
 
-####`getComponent(): P`
+#### `getComponent(): P`
 this will return a IDataMap object specified by the template variable `P`
 
 ```typescript
@@ -86,7 +86,7 @@ const fullNameComponent: IFullNameMap = fullName.getComponent();
 // fullNameComponent will be deep equal fullNameMap
 ```
 
-####`set(dataMap: P, force?: boolean): boolean | Promise<boolean>`
+#### `set(dataMap: P, force?: boolean): boolean | Promise<boolean>`
 Allows a complete reset of the entire dataMap. It is not advised to use this often as it is better practice to edit each dataLeaf, but this method is more efficient if it necessary to replace every DataLeaf.
 ```typescript
 const firstName: FirstName = new FirstName("Christopher");
@@ -101,26 +101,26 @@ const fullName: FullName = new FullName();
 fullName.set(fullNameMap);
 ```
 
-####`isValid(value?: P): boolean | Promise<boolean>`
+#### `isValid(value?: P): boolean | Promise<boolean>`
 
-####`updateSelf(newValue?: any): void`
+#### `updateSelf(newValue?: any): void`
 
-####`public updateObservers(): void`
+#### `public updateObservers(): void`
 This will update all observers of this data type of the current value held.
 
-####`public addObserver(observer: IObserver): void`
+#### `public addObserver(observer: IObserver): void`
 Adds another observer to current instance of the DataComposite.
 
-###IObserver
+### IObserver
 
 
-###IObservable
+### IObservable
 
 ## Creating Custom Data
 
-###Custom DataLeaf
+### Custom DataLeaf
 
-###Custom Composite
+### Custom Composite
 
 ## Extending Current Data
 
