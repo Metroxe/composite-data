@@ -5,9 +5,9 @@
 [![GitHub issues](https://img.shields.io/github/issues/Metroxe/composite-data.svg)](https://github.com/Metroxe/composite-data/issues)
 [![GitHub stars](https://img.shields.io/github/stars/Metroxe/composite-data.svg)](https://github.com/Metroxe/composite-data/stargazers)
 
-composite-data is a librrary that stores data in a composite pattern to be used for cross project validation. Implement a front-end application and a server-side application and be able to use the exact same validation processes in both. The library also allows data to be grouped into object to allow for collections of data to be validated simultaneously. Use this library with data storage and singleton's to create robust form components or use it client side to create comprehensive models that are guaranteed to be infalted easily with client side data and verifcation processes.
+composite-data is a library that stores data in a composite pattern to be used for cross project validation. Implement a front-end application and a server-side application and be able to use the exact same validation processes in both. The library also allows data to be grouped into object to allow for collections of data to be validated simultaneously. Use this library with data storage and singleton's to create robust form components or use it client side to create comprehensive models that are guaranteed to be infalted easily with client side data and verifcation processes.
 
-## Factory Pattern
+## Composite Pattern
 TBC
 
 ## Observer Pattern
