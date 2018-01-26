@@ -2,7 +2,6 @@ import {GenericString} from "../../";
 
 class PrimaryCareNetwork extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
-        GenericString.isAlphaNumeric,
         GenericString.notEmpty,
         PrimaryCareNetwork.minimumLength,
     ];

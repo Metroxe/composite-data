@@ -2,7 +2,6 @@ import {GenericString} from "../../";
 
 class BenefitIdentificationNumber extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
-        GenericString.isAlphaNumeric,
         GenericString.notEmpty,
         BenefitIdentificationNumber.properLength,
     ].concat(super.getParentValidityArray());

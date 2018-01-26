@@ -2,7 +2,7 @@ import {GenericString} from "../../";
 
 class CarrierName extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
-        GenericString.isAlphaNumeric,
+        GenericString.isAlphaNumericWithSpaces,
         GenericString.notEmpty,
         CarrierName.validLength,
     ].concat(super.getParentValidityArray());

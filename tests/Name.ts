@@ -11,6 +11,10 @@ describe("Name Tests, most general tests as well for the abstract classes", () =
         expect(middleName.set("!@#@#%!@"), "Setting !@#@#%!@").to.be.false;
         expect(firstName.set("Powroznik "), "Setting Powroznik ").to.be.false;
         expect(firstName.set(""), "Setting empty string").to.be.false;
+        const undefinedString: string = undefined;
+        const nullString: string = undefined;
+        expect(firstName.set(undefinedString), "Setting undefined").to.be.false;
+        expect(firstName.set(nullString), "Setting null").to.be.false;
     });
 
     it("pass on proper names", () => {

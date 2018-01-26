@@ -2,7 +2,7 @@ import {GenericString} from "../../";
 
 class GroupIdentification extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
-        GenericString.isAlphaNumeric,
+        GenericString.isAlphaNumericWithSpaces,
         GenericString.notEmpty,
         GroupIdentification.minimumLength,
     ].concat(this.getParentValidityArray());

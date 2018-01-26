@@ -2,7 +2,7 @@ import {GenericString} from "../../";
 
 class MedicareIdentification extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
-        GenericString.isAlphaNumeric,
+        GenericString.isAlphaNumericWithSpaces,
         GenericString.notEmpty,
         MedicareIdentification.properLength,
     ].concat(super.getParentValidityArray());

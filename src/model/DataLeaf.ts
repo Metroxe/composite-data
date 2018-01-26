@@ -8,7 +8,7 @@ abstract class DataLeaf<T> implements IData {
     private observers: Set<IObserver> = new Set<IObserver>();
 
     public constructor(value?: T) {
-        if (value !== undefined || value !== null) { this.value = value; }
+        if (value !== undefined && value !== null) { this.value = value; }
     }
 
     public getValue(): T {

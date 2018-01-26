@@ -4,7 +4,7 @@ import {IDataMap} from "../model";
 abstract class Name extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
         GenericString.noWhiteSpace,
-        GenericString.isAlphaNumeric,
+        GenericString.isAlphaNumericWithSpaces,
         Name.hasNumber,
         GenericString.notEmpty,
     ].concat(super.getParentValidityArray());

@@ -9,7 +9,7 @@ composite-data is a library that stores data in a composite pattern to be used f
 
 ## Installation
 
-### Yarn
+### yarn
 ```
 yarn add composite-data
 ```
