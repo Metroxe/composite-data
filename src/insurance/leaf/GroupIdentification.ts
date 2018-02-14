@@ -1,11 +1,11 @@
-import {DataLeaf} from "../../index";
+import {GenericString} from "../../";
 
-class GroupIdentification extends DataLeaf<string> {
+class GroupIdentification extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
-        DataLeaf.isAlphaNumeric,
-        DataLeaf.notEmpty,
+        GenericString.isAlphaNumericWithSpaces,
+        GenericString.notEmpty,
         GroupIdentification.minimumLength,
-    ];
+    ].concat(this.getParentValidityArray());
 
     private static minimumLength(value: string): boolean {
         return (value.length >= 2);

@@ -8,7 +8,6 @@ enum SalutationEnum {
 
 class Salutation extends DataLeaf<SalutationEnum> {
     protected validityArray: Array<(value: SalutationEnum) => boolean> = [
-        DataLeaf.notEmpty,
         Salutation.checkSalutation,
     ];
 

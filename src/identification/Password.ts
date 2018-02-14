@@ -1,11 +1,12 @@
-import {DataLeaf} from "../model";
+import {GenericString} from "../";
 
-class Password extends DataLeaf<string> {
+class Password extends GenericString {
 
     protected validityArray: Array<(value: string) => boolean> = [
         Password.isGreaterThanSix,
-        DataLeaf.notEmpty,
-    ];
+        GenericString.notEmpty,
+    ].concat(super.getParentValidityArray());
+
     private static passNumsRegex: RegExp = /[0-9]/;
     private static passLowerRegex: RegExp = /[a-z]/;
     private static passUpperRegex: RegExp = /[A-Z]/;

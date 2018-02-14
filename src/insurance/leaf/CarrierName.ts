@@ -1,11 +1,11 @@
-import {DataLeaf} from "../../index";
+import {GenericString} from "../../";
 
-class CarrierName extends DataLeaf<string> {
+class CarrierName extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
-        DataLeaf.isAlphaNumeric,
-        DataLeaf.notEmpty,
+        GenericString.isAlphaNumericWithSpaces,
+        GenericString.notEmpty,
         CarrierName.validLength,
-    ];
+    ].concat(super.getParentValidityArray());
 
     private static validLength(value: string): boolean {
         return (value.length > 2);
