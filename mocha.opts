@@ -1,0 +1,5 @@
+--require ts-node/register tests/*
+--timeout 3000
+--no-deprecation
+--check-leaks
+--recursive

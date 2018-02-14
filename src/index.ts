@@ -1,5 +1,8 @@
 import {DataComposite, DataLeaf, IData, IDataMap} from "./model";
 import {GenericString} from "./generic/GenericString";
+import {GenericDate} from "./generic/GenericDate";
+import {GenericNumber} from "./generic/GenericNumber";
+import {GenericBoolean} from "./generic/GenericBoolean";
 import {Address} from "./identification/Address";
 import {City} from "./identification/City";
 import {DateOfBirth} from "./identification/DateOfBirth";
@@ -56,4 +59,7 @@ export {IData,
     Medicare,
     OtherHealthInsurance,
     Tricare,
+    GenericNumber,
+    GenericDate,
+    GenericBoolean,
 };

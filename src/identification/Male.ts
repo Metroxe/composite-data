@@ -1,9 +1,5 @@
-import {DataLeaf} from "../";
+import {GenericBoolean} from "../generic/GenericBoolean";
 
-class Male extends DataLeaf<boolean> {
-    protected validityArray: Array<(value: boolean) => boolean> = [
-        DataLeaf.booleanCheck,
-    ];
-}
+class Male extends GenericBoolean {}
 
 export {Male};

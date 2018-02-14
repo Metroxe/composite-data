@@ -8,7 +8,7 @@ abstract class DataLeaf<T> implements IData {
     private observers: Set<IObserver> = new Set<IObserver>();
 
     public constructor(value?: T) {
-        if (value !== undefined || value !== null) { this.value = value; }
+        if (value !== undefined && value !== null) { this.value = value; }
     }
 
     public getValue(): T {
@@ -63,32 +63,9 @@ abstract class DataLeaf<T> implements IData {
         this.observers.add(observer);
     }
 
-    protected static noWhiteSpace(value: string): boolean {
-        return !(value.indexOf(" ") > 0);
-    }
-
-    protected static notEmpty(value: string): boolean {
-        return value.length > 0;
-    }
-
-    protected static booleanCheck(value: boolean): boolean {
-        return (typeof(value) === "boolean");
-    }
-
-    protected static isAlphaNumeric(value: string): boolean {
-        let code: number;
-        let i: number;
-        let len: number;
-
-        for (i = 0, len = value.length; i < len; i++) {
-            code = value.charCodeAt(i);
-            if (!(code > 47 && code < 58) && // numeric (0-9)
-                !(code > 64 && code < 91) && // upper alpha (A-Z)
-                !(code > 96 && code < 123)) { // lower alpha (a-z)
-                return false;
-            }
-        }
-        return true;
+    // Must call with super
+    protected getParentValidityArray(): Array<(value: T) => boolean> {
+        return this.validityArray;
     }
 }
 
