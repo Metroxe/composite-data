@@ -45,7 +45,8 @@
     ],
     "max-line-length": [false],
     "max-file-line-count": [false],
-    "ordered-imports": false
+    "ordered-imports": false,
+    "indent": ["tabs"]
   },
   "rulesDirectory": []
 }
