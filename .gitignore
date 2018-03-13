@@ -59,6 +59,7 @@ typings/
 
 # jetbrains
 .idea
+*.iml
 
 #builds
 dist
