@@ -21,6 +21,7 @@ abstract class DataLeaf<T> implements IData {
 
     public set(value: T | any, force?: boolean): boolean | Promise<boolean> {
         const valid: boolean | Promise<boolean> = this.isValid(value);
+
         if (force || valid) {
             this.value = value;
             this.updateObservers();
@@ -45,7 +46,13 @@ abstract class DataLeaf<T> implements IData {
         if (v !== null && typeof v !== "undefined") {
             let func: (value: T) => boolean;
             for (func of this.validityArray) {
-                if (!func(v)) { return false; }
+                try {
+					if (!func(v)) {
+						return false;
+					}
+				} catch (err) {
+                    return false;
+                }
             }
         } else { return false; }
 
@@ -54,8 +61,9 @@ abstract class DataLeaf<T> implements IData {
 
     public updateObservers(): void {
         let observer: IObserver;
+        const value: T = this.getValue();
         for (observer of this.observers) {
-            observer.updateSelf(this.getValue());
+            observer.updateSelf(value);
         }
     }
 

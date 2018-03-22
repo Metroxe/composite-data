@@ -30,10 +30,11 @@ abstract class DataComposite<P extends IDataMap> implements IData, IObserver {
 	}
 
 	public set(dataMap: P, force?: boolean): boolean | Promise<boolean> {
+
 		if (force) {
 			this.dataMap = dataMap;
 			this.addSelfAsObserver();
-			return true;
+			return this.isValid();
 		}
 
 		if (this.isValid(dataMap)) {
