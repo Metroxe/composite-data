@@ -1,5 +1,7 @@
 import {expect} from "chai";
 import {FirstName, FullName, IFullNameMap, LastName, MiddleName} from "../dist";
+import {IDataMap} from "../src/model";
+import {GenericString} from "../src";
 
 describe("Name Tests, most general tests as well for the abstract classes", () => {
     const firstName: FirstName = new FirstName();
@@ -46,6 +48,55 @@ describe("Name Tests, most general tests as well for the abstract classes", () =
         expect(fullName.isValid(), "check valid on self").to.be.true;
         expect(fullName.isValid(fullNameMap), "check valid on map").to.be.true;
     });
+
+    it("force set composite", () => {
+		firstName.set("Christopher");
+		middleName.set("Vinson");
+		lastName.set("Powroznik");
+		const fullNameMap: IFullNameMap = {
+			firstName,
+			lastName,
+			middleName,
+		};
+		const fullName: FullName = new FullName();
+		expect(fullName.set(fullNameMap, true), "adding Full Name Map Forced").to.be.true;
+		expect(fullName.isValid(), "check valid on self").to.be.true;
+		expect(fullName.isValid(fullNameMap), "check valid on map").to.be.true;
+		const value: object = fullName.getValue();
+		expect(value, "Check value outputted").to.deep.equal({
+			firstName: "Christopher",
+			middleName: "Vinson",
+			lastName: "Powroznik",
+		});
+		const incorrectMap: IDataMap = {
+			notAValidKey: new GenericString("proper string"),
+		};
+		expect(fullName.set(incorrectMap, true), "adding Full Name Map Forced").to.be.true;
+		expect(fullName.isValid(), "check valid on self").to.be.true;
+		expect(fullName.set(fullNameMap, true), "adding Full Name Map Forced").to.be.true;
+	});
+
+    it("add not valid dataLeaf", () => {
+		firstName.set("Christopher");
+		middleName.set(false, true);
+		expect(middleName.isValid(), "check middle name").to.be.false;
+		lastName.set("Powroznik");
+		const fullNameMap: IFullNameMap = {
+			firstName,
+			lastName,
+			middleName,
+		};
+		const fullName: FullName = new FullName();
+		expect(fullName.set(fullNameMap, true), "adding Full Name Map Forced").to.be.false;
+		const value: object = fullName.getValue();
+		expect(value, "Check value outputted").to.deep.equal({
+			firstName: "Christopher",
+			middleName: false,
+			lastName: "Powroznik",
+		});
+		expect(fullName.isValid(), "check valid on self").to.be.false;
+		expect(fullName.set(fullNameMap), "adding Full Name Map Forced").to.be.false;
+	});
 
     it("optional parameters are still valid if not present", () => {
         const fullNameMap: IFullNameMap = {};

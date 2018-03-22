@@ -20,6 +20,7 @@ class DataArray extends DataLeaf<IData[]> {
 		}
 		return true;
 	}
+
 }
 
 export {DataArray};
