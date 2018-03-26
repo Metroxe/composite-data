@@ -18,5 +18,4 @@ describe("Tests validity of pay out of pocket", () => {
         expect(payOutOfPocket.set("detb"), "should return false").to.be.false;
         expect(payOutOfPocket.set("1234"), "should return false").to.be.false;
     });
-
 });
