@@ -16,6 +16,7 @@ import {Salutation, SalutationEnum} from "./identification/Salutation";
 import {State} from "./identification/State";
 import {ZipCode} from "./identification/Zipcode";
 import {Location} from "./identification/Location";
+import {OrderType, OrderTypeEnum} from "./application_specific/rxtome/order/OrderType";
 import {IObservable, IObserver} from "./model";
 import {
 	CarrierName,
@@ -95,6 +96,8 @@ export {
 	GenericDate,
 	GenericBoolean,
 	Location,
+	OrderTypeEnum,
+	OrderType,
 	IRxToMeOrderMap,
 	IRxToMeDoctorMap,
 	IRxToMePharmacyMap,
