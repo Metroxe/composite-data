@@ -10,6 +10,7 @@ import {DateOfBirth} from "./identification/DateOfBirth";
 import {Email} from "./identification/Email";
 import {Male} from "./identification/Male";
 import {FirstName, FullName, IFullNameMap, LastName, MiddleName, Name} from "./identification/Name";
+import {PayOutOfPocket, PayOutOfPocketEnum} from "./application_specific/rxtome/order/PayOutOfPocket";
 import {Password} from "./identification/Password";
 import {Phone} from "./identification/Phone";
 import {Salutation, SalutationEnum} from "./identification/Salutation";
@@ -48,7 +49,6 @@ import {
 	RxToMeRefillOrder,
 	RxToMePrescriptionOrder,
 } from "./application_specific/rxtome";
-
 export {
 	IData,
 	DataLeaf,
@@ -62,6 +62,8 @@ export {
 	LastName,
 	IFullNameMap,
 	FullName,
+	PayOutOfPocket,
+	PayOutOfPocketEnum,
 	Email,
 	Password,
 	SalutationEnum,
