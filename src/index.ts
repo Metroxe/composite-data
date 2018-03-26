@@ -48,11 +48,6 @@ import {
 	RxToMeRefillOrder,
 	RxToMePrescriptionOrder,
 } from "./application_specific/rxtome";
-import {PayOutOfPocket} from "./application_specific/rxtome/order/PayOutOfPocket";
-import {PayOutOfPocketEnum} from "./application_specific/rxtome/order/PayOutOfPocket";
-import {PayOutOfPocketEnum} from "./application_specific/rxtome/order/PayOutOfPocket";
-import {PayOutOfPocketEnum} from "./application_specific/rxtome/order/PayOutOfPocket";
-
 export {
 	IData,
 	DataLeaf,
