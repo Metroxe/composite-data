@@ -2,22 +2,22 @@ import {expect} from "chai";
 import {NumberOfMedications} from "../dist";
 
 describe("Tests validity of number of medications", () => {
-    const numberOfMedications: NumberOfMedications = new NumberOfMedications();
+	const numberOfMedications: NumberOfMedications = new NumberOfMedications();
 
-    it("Checking the isValid of number of medications", () => {
-        expect(numberOfMedications.isValid("0"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("1"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("2"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("3"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("4"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("5"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("6"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("7"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("8"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("9"), "should return true").to.be.true;
-        expect(numberOfMedications.isValid("10"), "should return true").to.be.true;
+	it("Checking the isValid of number of medications", () => {
+		expect(numberOfMedications.isValid("0"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("1"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("2"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("3"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("4"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("5"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("6"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("7"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("8"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("9"), "should return true").to.be.true;
+		expect(numberOfMedications.isValid("10"), "should return true").to.be.true;
 
-    });
+	});
 
 	it("Checking the isValid of incorrect number of medications", () => {
 		expect(numberOfMedications.isValid("50"), "should return true").to.be.false;
