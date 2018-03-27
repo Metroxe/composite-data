@@ -5,6 +5,9 @@ import {GroupIdentification} from "./leaf/GroupIdentification";
 import {MedicareIdentification} from "./leaf/MedicareIdentifcation";
 import {InsuranceIdentification} from "./leaf/InsuranceIdentification";
 import {BenefitIdentificationNumber} from "./leaf/BenefitIdentificationNumber";
+import {OtherNotes} from "./leaf/OtherNotes";
+import {CardFront} from "./leaf/CardFront";
+import {CardBack} from "./leaf/CardBack";
 
 // maps
 import {IPrivateHealthInsuranceMap} from "./composite/PrivateHealthInsurance";
@@ -29,6 +32,9 @@ export {
     MedicareIdentification,
     InsuranceIdentification,
     BenefitIdentificationNumber,
+    OtherNotes,
+    CardFront,
+    CardBack,
     IPrivateHealthInsuranceMap,
     IMedicaidMap,
     IMedicareAdvantageMap,
