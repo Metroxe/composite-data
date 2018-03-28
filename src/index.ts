@@ -3,7 +3,7 @@ import {GenericString} from "./generic/GenericString";
 import {GenericDate} from "./generic/GenericDate";
 import {GenericNumber} from "./generic/GenericNumber";
 import {GenericBoolean} from "./generic/GenericBoolean";
-import {GenericPercent} from "./generic/GenericPercent";
+import {GenericPercentage} from "./generic/GenericPercentage";
 import {DataArray} from "./generic/GenericArray";
 import {DeliveryStatus, DeliveryStatusEnum} from "./application_specific/rxtome/order/DeliveryStatus";
 import {Address} from "./identification/Address";
@@ -109,7 +109,7 @@ export {
 	GenericNumber,
 	GenericDate,
 	GenericBoolean,
-	GenericPercent,
+	GenericPercentage,
 	Location,
 	OrderTypeEnum,
 	OrderType,
