@@ -4,11 +4,13 @@ import {GenericDate} from "./generic/GenericDate";
 import {GenericNumber} from "./generic/GenericNumber";
 import {GenericBoolean} from "./generic/GenericBoolean";
 import {DataArray} from "./generic/GenericArray";
+import {DeliveryStatus, DeliveryStatusEnum} from "./application_specific/rxtome/order/DeliveryStatus";
 import {Address} from "./identification/Address";
 import {City} from "./identification/City";
 import {DateOfBirth} from "./identification/DateOfBirth";
 import {Email} from "./identification/Email";
 import {Male} from "./identification/Male";
+import {NumberOfMedications} from "./application_specific/rxtome/order/NumberOfMedications";
 import {FirstName, FullName, IFullNameMap, LastName, MiddleName, Name} from "./identification/Name";
 import {PayOutOfPocket, PayOutOfPocketEnum} from "./application_specific/rxtome/order/PayOutOfPocket";
 import {Password} from "./identification/Password";
@@ -78,6 +80,9 @@ export {
 	City,
 	Address,
 	ZipCode,
+    DeliveryStatus,
+	DeliveryStatusEnum,
+    NumberOfMedications,
 	GenericString,
 	CarrierName,
 	PrimaryCareNetwork,
