@@ -3,6 +3,7 @@ import {GenericString} from "./generic/GenericString";
 import {GenericDate} from "./generic/GenericDate";
 import {GenericNumber} from "./generic/GenericNumber";
 import {GenericBoolean} from "./generic/GenericBoolean";
+import {GenericPercent} from "./generic/GenericPercent";
 import {DataArray} from "./generic/GenericArray";
 import {DeliveryStatus, DeliveryStatusEnum} from "./application_specific/rxtome/order/DeliveryStatus";
 import {Address} from "./identification/Address";
@@ -19,6 +20,7 @@ import {Salutation, SalutationEnum} from "./identification/Salutation";
 import {State} from "./identification/State";
 import {ZipCode} from "./identification/Zipcode";
 import {Location} from "./identification/Location";
+import {OrderType, OrderTypeEnum} from "./application_specific/rxtome/order/OrderType";
 import {IObservable, IObserver} from "./model";
 import {
 	CarrierName,
@@ -27,6 +29,9 @@ import {
 	MedicareIdentification,
 	InsuranceIdentification,
 	BenefitIdentificationNumber,
+    OtherNotes,
+	CardFront,
+	CardBack,
 	IPrivateHealthInsuranceMap,
 	IMedicaidMap,
 	IMedicareAdvantageMap,
@@ -86,6 +91,9 @@ export {
 	MedicareIdentification,
 	InsuranceIdentification,
 	BenefitIdentificationNumber,
+    OtherNotes,
+	CardFront,
+	CardBack,
 	IPrivateHealthInsuranceMap,
 	IMedicaidMap,
 	IMedicareAdvantageMap,
@@ -101,7 +109,10 @@ export {
 	GenericNumber,
 	GenericDate,
 	GenericBoolean,
+	GenericPercent,
 	Location,
+	OrderTypeEnum,
+	OrderType,
 	IRxToMeOrderMap,
 	IRxToMeDoctorMap,
 	IRxToMePharmacyMap,

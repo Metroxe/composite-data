@@ -2,6 +2,7 @@ import {GenericString} from "../../";
 
 class InsuranceIdentification extends GenericString {
     protected validityArray: Array<(value: string) => boolean> = [
+        GenericString.isAlphaNumericWithSpaces,
         GenericString.notEmpty,
         InsuranceIdentification.minimumLength,
     ].concat(this.getParentValidityArray());
