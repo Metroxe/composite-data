@@ -1,9 +1,9 @@
 import {DataLeaf} from "../model";
 
-class GenericPercent extends DataLeaf<number> {
+class GenericPercentage extends DataLeaf<number> {
 
 	protected validityArray: Array<(value: number) => boolean> = [
-		GenericPercent.isPercentage,
+		GenericPercentage.isPercentage,
 	];
 
 	private static isPercentage(value: number): boolean {
@@ -11,4 +11,4 @@ class GenericPercent extends DataLeaf<number> {
 	}
 }
 
-export {GenericPercent};
+export {GenericPercentage};
