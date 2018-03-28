@@ -1,6 +1,6 @@
 import {
 	DataComposite, GenericDate, GenericString, Phone, ZipCode, Location, RxToMePharmacy, RxToMeDoctor,
-	GenericNumber, DataArray, OrderType, PayOutOfPocket
+	GenericNumber, DataArray, OrderType, PayOutOfPocket, OtherNotes,
 } from "../../../";
 import {IDataMap} from "../../../model";
 
@@ -31,7 +31,7 @@ interface IRxToMeOrderMap extends IDataMap {
 	drugAllergies?: GenericString;
 	numberOfMedications?: GenericNumber;
 	insurance: DataArray;
-	notes?: GenericString;
+	notes?: OtherNotes;
 	payOutOfPocket?: PayOutOfPocket;
 	callTime?: GenericString;
 	dateAdded: GenericDate;
