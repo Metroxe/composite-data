@@ -47,6 +47,7 @@ import {
 } from "./insurance";
 import {
 	IRxToMeOrderMap,
+	IRxToMePrescriptionMap,
 	IRxToMeDoctorMap,
 	IRxToMePharmacyMap,
 	RxToMeOrder,
@@ -113,6 +114,7 @@ export {
 	Location,
 	OrderTypeEnum,
 	OrderType,
+	IRxToMePrescriptionMap,
 	IRxToMeOrderMap,
 	IRxToMeDoctorMap,
 	IRxToMePharmacyMap,

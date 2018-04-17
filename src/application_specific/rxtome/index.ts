@@ -1,7 +1,7 @@
 // leaves
 
 // maps
-import {IRxToMeOrderMap} from "./order/RxToMeOrder";
+import {IRxToMeOrderMap, IRxToMePrescriptionMap} from "./order/RxToMeOrder";
 import {IRxToMeDoctorMap} from "./RxToMeDoctor";
 import {IRxToMePharmacyMap} from "./RxToMePharmacy";
 
@@ -14,6 +14,7 @@ import {RxToMePrescriptionOrder} from "./order/RxToMeOrder";
 
 export {
 	IRxToMeOrderMap,
+	IRxToMePrescriptionMap,
 	IRxToMeDoctorMap,
 	IRxToMePharmacyMap,
 	RxToMeOrder,

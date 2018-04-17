@@ -10,7 +10,21 @@ abstract class RxToMeOrder extends DataComposite<IRxToMeOrderMap> {
 class RxToMeRefillOrder extends RxToMeOrder {
 }
 
-class RxToMePrescriptionOrder extends RxToMeOrder {
+class RxToMePrescriptionOrder extends DataComposite<IRxToMePrescriptionMap> {
+}
+
+interface IRxToMePrescriptionMap extends IDataMap {
+	doctor?: RxToMeDoctor;
+	insurance?: DataArray;
+	medicationName?: GenericString;
+	rxNumber?: GenericString;
+	orderType: OrderType;
+	prescriptionImage?: GenericString;
+	userLocation?: Location;
+	drugAllergies?: GenericString;
+	specialInstruction?: GenericString;
+	pharmacy?: RxToMePharmacy;
+	callTime?: GenericString;
 }
 
 interface IRxToMeOrderMap extends IDataMap {
@@ -38,4 +52,4 @@ interface IRxToMeOrderMap extends IDataMap {
 	dateModified?: GenericDate;
 }
 
-export {IRxToMeOrderMap, RxToMeOrder, RxToMePrescriptionOrder, RxToMeRefillOrder};
+export {IRxToMeOrderMap, RxToMeOrder, IRxToMePrescriptionMap, RxToMePrescriptionOrder, RxToMeRefillOrder};
