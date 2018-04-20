@@ -4,6 +4,7 @@ import {IDataMap} from "../../model";
 class RxToMePharmacy extends DataComposite<IRxToMePharmacyMap> {}
 
 interface IRxToMePharmacyMap extends IDataMap {
+	id: GenericString;
 	name: GenericString;
 	location: Location;
 }
