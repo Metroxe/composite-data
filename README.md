@@ -1,4 +1,5 @@
-# composite-data
+![logo](https://github.com/Metroxe/composite-data/blob/develop/diagrams/data_composite_3000.png?raw=true)
+
 [![npm version](https://badge.fury.io/js/composite-data.svg)](https://badge.fury.io/js/composite-data)
 [![npm](https://img.shields.io/npm/dt/composite-data.svg)](https://www.npmjs.com/package/composite-data)
 [![Build Status](https://travis-ci.org/Metroxe/composite-data.svg?branch=observer)](https://travis-ci.org/Metroxe/composite-data)
