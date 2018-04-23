@@ -55,6 +55,10 @@ import {
 	RxToMeDoctor,
 	RxToMeRefillOrder,
 	RxToMePrescriptionOrder,
+	RxToMeFeedbackCategory,
+	IRxToMeFeedbackMap,
+	FeedbackCategoryEnum,
+	RxToMeFeedback,
 } from "./application_specific/rxtome";
 export {
 	IData,
@@ -124,4 +128,8 @@ export {
 	DataArray,
 	RxToMeRefillOrder,
 	RxToMePrescriptionOrder,
+	RxToMeFeedbackCategory,
+	IRxToMeFeedbackMap,
+	FeedbackCategoryEnum,
+	RxToMeFeedback,
 };

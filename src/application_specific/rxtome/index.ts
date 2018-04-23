@@ -11,6 +11,7 @@ import {RxToMeOrder} from "./order/RxToMeOrder";
 import {RxToMePharmacy} from "./RxToMePharmacy";
 import {RxToMeRefillOrder} from "./order/RxToMeOrder";
 import {RxToMePrescriptionOrder} from "./order/RxToMeOrder";
+import {RxToMeFeedbackCategory, FeedbackCategoryEnum, IRxToMeFeedbackMap, RxToMeFeedback} from "./RxToMeFeedback"
 
 export {
 	IRxToMeOrderMap,
@@ -22,4 +23,8 @@ export {
 	RxToMeDoctor,
 	RxToMeRefillOrder,
 	RxToMePrescriptionOrder,
+	RxToMeFeedbackCategory,
+	IRxToMeFeedbackMap,
+	FeedbackCategoryEnum,
+	RxToMeFeedback,
 };
