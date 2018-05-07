@@ -1,9 +1,11 @@
 import {IData, IDataMap} from "./";
 import {IObserver} from "./Observer";
+import {IValidationResult} from "./IValidationResult";
+import {ValidationResult} from "./ValidationResult";
 
 abstract class DataComposite<P extends IDataMap> implements IData, IObserver {
 	protected dataMap: P;
-	protected validityArray: Array<(value: P) => boolean> = [];
+	protected validityArray: Array<(value: P) => IValidationResult> = [];
 	private observers: Set<IObserver> = new Set<IObserver>();
 
 	constructor(dataMap?: P) {
@@ -29,7 +31,7 @@ abstract class DataComposite<P extends IDataMap> implements IData, IObserver {
 		return this.dataMap;
 	}
 
-	public set(dataMap: P, force?: boolean): boolean | Promise<boolean> {
+	public set(dataMap: P, force?: boolean): IValidationResult/* | Promise<IValidationResult>*/ {
 
 		if (force) {
 			this.dataMap = dataMap;
@@ -40,13 +42,13 @@ abstract class DataComposite<P extends IDataMap> implements IData, IObserver {
 		if (this.isValid(dataMap)) {
 			this.dataMap = dataMap;
 			this.addSelfAsObserver();
-			return true;
+			return new ValidationResult(true);
 		}
 
-		return false;
+		return new ValidationResult(false);
 	}
 
-	public isValid(value?: P): boolean | Promise<boolean> {
+	public isValid(value?: P): IValidationResult/* | Promise<IValidationResult>*/ {
 		let v: P;
 		if (value) {
 			v = value;
@@ -60,20 +62,22 @@ abstract class DataComposite<P extends IDataMap> implements IData, IObserver {
 		let key: string;
 		for (key of keys) {
 			if (v[key]) {
-				if (!v[key].isValid()) {
-					return false;
+				let validRes: IValidationResult = v[key].isValid();
+				if (!validRes.valid) {
+					return validRes;
 				}
 			}
 		}
 
 		// Check Validity Array
-		let func: (value: P) => boolean;
+		let func: (value: P) => IValidationResult;
 		for (func of this.validityArray) {
-			if (!func(v)) {
-				return false;
+			let validRes = func(v);
+			if (!validRes.valid) {
+				return validRes;
 			}
 		}
-		return true;
+		return new ValidationResult(true);
 	}
 
 	public updateSelf(newValue?: any): void {
@@ -93,7 +97,7 @@ abstract class DataComposite<P extends IDataMap> implements IData, IObserver {
 	}
 
 	// Must call with super
-	protected getParentValidityArray(): Array<(value: P) => boolean> {
+	protected getParentValidityArray(): Array<(value: P) => IValidationResult> {
 		return this.validityArray;
 	}
 

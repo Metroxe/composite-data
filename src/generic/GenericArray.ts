@@ -1,24 +1,25 @@
-import {DataLeaf, IData} from "../model";
+import {DataLeaf, IData, IValidationResult, ValidationResult} from "../model";
 
 class DataArray extends DataLeaf<IData[]> {
 
-	protected validityArray: Array<(value: IData[]) => boolean> = [
+	protected validityArray: Array<(value: IData[]) => IValidationResult> = [
 		DataArray.isArray,
 		DataArray.checkValidityOfItemsInArray,
 	];
 
-	private static isArray(value: IData[]): boolean {
-		return (value.constructor === Array);
+	private static isArray(value: IData[]): IValidationResult {
+		return new ValidationResult(value.constructor === Array);
 	}
 
-	private static checkValidityOfItemsInArray(value: IData[]): boolean {
+	private static checkValidityOfItemsInArray(value: IData[]): IValidationResult {
 		let data: IData;
 		for (data of value) {
-			if (!data.isValid()) {
-				return false;
+			let validRes: IValidationResult = data.isValid();
+			if (!validRes.valid) {
+				return validRes;
 			}
 		}
-		return true;
+		return new ValidationResult(true);
 	}
 
 }
