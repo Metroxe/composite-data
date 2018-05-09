@@ -23,7 +23,7 @@ abstract class DataLeaf<T> implements IData {
     }
 
     public set(value: T | any, force?: boolean): IValidationResult/* | Promise<IValidationResult>*/ {
-        const validRes: IValidationResult/* | Promise<IValidationResult>*/ = this.isValid(value);
+        const validRes: IValidationResult /* | Promise<IValidationResult>*/ = this.isValid(value);
 
         if (force || validRes.valid) {
             this.value = value;
@@ -50,7 +50,7 @@ abstract class DataLeaf<T> implements IData {
             let func: (value: T) => IValidationResult;
             for (func of this.validityArray) {
                 try {
-                    let validRes: IValidationResult = func(v);
+                    const validRes: IValidationResult = func(v);
                     if (!validRes.valid) {
                         return validRes;
                     }

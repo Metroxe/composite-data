@@ -20,5 +20,5 @@ export {
 	GenericPercentage,
 	DataArray,
     IValidationResult,
-	ValidationResult
+	ValidationResult,
 };

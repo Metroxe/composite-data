@@ -14,7 +14,7 @@ class DataArray extends DataLeaf<IData[]> {
 	private static checkValidityOfItemsInArray(value: IData[]): IValidationResult {
 		let data: IData;
 		for (data of value) {
-			let validRes: IValidationResult = data.isValid();
+			const validRes: IValidationResult = data.isValid();
 			if (!validRes.valid) {
 				return validRes;
 			}

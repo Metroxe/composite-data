@@ -62,7 +62,7 @@ abstract class DataComposite<P extends IDataMap> implements IData, IObserver {
 		let key: string;
 		for (key of keys) {
 			if (v[key]) {
-				let validRes: IValidationResult = v[key].isValid();
+				const validRes: IValidationResult = v[key].isValid();
 				if (!validRes.valid) {
 					return validRes;
 				}
@@ -72,7 +72,7 @@ abstract class DataComposite<P extends IDataMap> implements IData, IObserver {
 		// Check Validity Array
 		let func: (value: P) => IValidationResult;
 		for (func of this.validityArray) {
-			let validRes = func(v);
+			const validRes: IValidationResult = func(v);
 			if (!validRes.valid) {
 				return validRes;
 			}
