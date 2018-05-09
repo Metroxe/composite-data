@@ -1,13 +1,13 @@
-import {DataLeaf} from "../model";
+import {DataLeaf, IValidationResult, ValidationResult} from "../model";
 
 class GenericNumber extends DataLeaf<number> {
 
-    protected validityArray: Array<(value: number) => boolean> = [
+    protected validityArray: Array<(value: number) => IValidationResult> = [
         GenericNumber.isNumber,
     ];
 
-    private static isNumber(value: number): boolean {
-        return (typeof value === "number");
+    private static isNumber(value: number): IValidationResult {
+        return new ValidationResult(typeof value === "number");
     }
 
 }
