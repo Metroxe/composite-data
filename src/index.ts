@@ -12,6 +12,7 @@ export {
 	DataComposite,
 	IDataMap,
 	IObserver,
+	IObservable,
 	GenericString,
 	GenericNumber,
 	GenericDate,
