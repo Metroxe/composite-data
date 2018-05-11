@@ -2,7 +2,6 @@ import {IData} from "./";
 import {IObserver} from "./Observer";
 import {IValidationResult} from "./";
 import {ValidationResult} from "./ValidationResult";
-import {IDataMap} from "./IDataMap";
 
 abstract class DataLeaf<T> implements IData {
 
