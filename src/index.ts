@@ -5,7 +5,7 @@ import {GenericNumber} from "./generic/GenericNumber";
 import {GenericBoolean} from "./generic/GenericBoolean";
 import {GenericPercentage} from "./generic/GenericPercentage";
 import {DataArray} from "./generic/GenericArray";
-import {IObservable, IObserver, IValidationResult, ValidationResult} from "./model";
+import {IObservable, IObserver, IValidationResult, ValidationResult, IDataLeafValues} from "./model";
 export {
 	IData,
 	DataLeaf,
@@ -21,4 +21,5 @@ export {
 	DataArray,
     IValidationResult,
 	ValidationResult,
+	IDataLeafValues,
 };
