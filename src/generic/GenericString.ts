@@ -1,22 +1,22 @@
-import {DataLeaf} from "../model";
+import {DataLeaf, IValidationResult, ValidationResult} from "../model";
 
 class GenericString extends DataLeaf<string> {
 
-    protected validityArray: Array<(value: string) => boolean> = [
+    protected validityArray: Array<(value: string) => IValidationResult> = [
         GenericString.isString,
     ];
 
     private static spaceCharCode: number = " ".charCodeAt(0);
 
-    protected static notEmpty(value: string): boolean {
-        return value.length > 0;
+    protected static notEmpty(value: string): IValidationResult {
+        return new ValidationResult(value && value.trim().length > 0, "This field cannot be empty.");
     }
 
-    protected static noWhiteSpace(value: string): boolean {
-        return !(value.indexOf(" ") > 0);
+    protected static noWhiteSpace(value: string): IValidationResult {
+        return new ValidationResult(!(value.indexOf(" ") > 0), "This field cannot contain spaces.");
     }
 
-    protected static isAlphaNumericWithSpaces(value: string): boolean {
+    protected static isAlphaNumericWithSpaces(value: string): IValidationResult {
         let code: number;
         let i: number;
         let len: number;
@@ -27,14 +27,14 @@ class GenericString extends DataLeaf<string> {
                 !(code > 64 && code < 91) && // upper alpha (A-Z)
                 !(code > 96 && code < 123) && // lower alpha (a-z)
                 !(code === GenericString.spaceCharCode)) {
-                return false;
+                return new ValidationResult(false, "This field cannot contain special characters.");
             }
         }
-        return true;
+        return new ValidationResult(true);
     }
 
-    private static isString(value: string): boolean {
-        return (typeof value === "string");
+    private static isString(value: string): IValidationResult {
+        return new ValidationResult(typeof value === "string");
     }
 
 }

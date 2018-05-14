@@ -1,10 +1,12 @@
 import {IData} from "./";
 import {IObserver} from "./Observer";
+import {IValidationResult} from "./";
+import {ValidationResult} from "./ValidationResult";
 
 abstract class DataLeaf<T> implements IData {
 
     protected value: T;
-    protected abstract validityArray: Array<(value: T) => boolean>;
+    protected abstract validityArray: Array<(value: T) => IValidationResult>;
     private observers: Set<IObserver> = new Set<IObserver>();
 
     public constructor(value?: T) {
@@ -19,22 +21,22 @@ abstract class DataLeaf<T> implements IData {
         return this;
     }
 
-    public set(value: T | any, force?: boolean): boolean | Promise<boolean> {
-        const valid: boolean | Promise<boolean> = this.isValid(value);
+    public set(value: T | any, force?: boolean): IValidationResult/* | Promise<IValidationResult>*/ {
+        const validRes: IValidationResult /* | Promise<IValidationResult>*/ = this.isValid(value);
 
-        if (force || valid) {
+        if (force || validRes.valid) {
             this.value = value;
             this.updateObservers();
             if (force) {
-                return valid;
+                return validRes;
             } else {
-                return true;
+                return new ValidationResult(true);
             }
         }
-        return false;
+        return new ValidationResult(false);
     }
 
-    public isValid(value?: T): boolean | Promise<boolean> {
+    public isValid(value?: T): IValidationResult/* | Promise<IValidationResult>*/ {
         let v: T;
 
         if (value !== null && typeof value !== "undefined") {
@@ -44,19 +46,22 @@ abstract class DataLeaf<T> implements IData {
         }
 
         if (v !== null && typeof v !== "undefined") {
-            let func: (value: T) => boolean;
+            let func: (value: T) => IValidationResult;
             for (func of this.validityArray) {
                 try {
-					if (!func(v)) {
-						return false;
-					}
+                    const validRes: IValidationResult = func(v);
+                    if (!validRes.valid) {
+                        return validRes;
+                    }
 				} catch (err) {
-                    return false;
+                    return new ValidationResult(false);
                 }
             }
-        } else { return false; }
+        } else {
+            return new ValidationResult(false);
+        }
 
-        return true;
+        return new ValidationResult(true);
     }
 
     public updateObservers(): void {
@@ -72,7 +77,7 @@ abstract class DataLeaf<T> implements IData {
     }
 
     // Must call with super
-    protected getParentValidityArray(): Array<(value: T) => boolean> {
+    protected getParentValidityArray(): Array<(value: T) => IValidationResult> {
         return this.validityArray;
     }
 }
