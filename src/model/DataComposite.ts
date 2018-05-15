@@ -50,6 +50,11 @@ export class DataComposite<P extends IDataMap> implements IData, IObserver {
         const scope: DataComposite<P> = this;
 
         return new Promise((f: (res: IValidationResultItem) => void, r: (res: IValidationResultItem) => void): void => {
+            if (!scope.validityArray || scope.validityArray.length < 1) {
+                f(new ValidationResult(true).getResult());
+                return;
+            }
+
             let func: (data?: IDataLeafValues) => IValidationResult;
             const asyncValidFuncs: Array<Promise<IValidationResultItem>> = [];
             for (func of scope.validityArray) {

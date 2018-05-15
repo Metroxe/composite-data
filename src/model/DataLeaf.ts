@@ -49,6 +49,11 @@ abstract class DataLeaf<T> implements IData {
 
         return new Promise((f: (res: IValidationResultItem) => void, r: (res: IValidationResultItem) => void): void => {
             if (v !== null && typeof v !== "undefined") {
+                if (!scope.validityArray || scope.validityArray.length < 1) {
+                    f(new ValidationResult(true).getResult());
+                    return;
+                }
+
                 let func: (value: T) => IValidationResult;
                 const asyncValidFuncs: Array<Promise<IValidationResultItem>> = [];
                 for (func of scope.validityArray) {
