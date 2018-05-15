@@ -3,7 +3,7 @@ import {DataLeaf} from "./DataLeaf";
 import {IData} from "./IData";
 import {IDataMap} from "./IDataMap";
 import {IObservable, IObserver} from "./Observer";
-import {IValidationResult} from "./IValidationResult";
+import {IValidationResult, IValidationResultItem} from "./IValidationResult";
 import {ValidationResult} from "./ValidationResult";
 
-export {IData, IDataMap, DataComposite, DataLeaf, IObserver, IObservable, IValidationResult, ValidationResult, IDataLeafValues};
+export {IData, IDataMap, DataComposite, DataLeaf, IObserver, IObservable, IValidationResult, IValidationResultItem, ValidationResult, IDataLeafValues};
