@@ -1,115 +1,120 @@
 import {IData, IDataMap} from "./";
 import {IObserver} from "./Observer";
-import {IValidationResult} from "./IValidationResult";
+import {IValidationResult, IValidationResultItem} from "./IValidationResult";
 import {ValidationResult} from "./ValidationResult";
 
-abstract class DataComposite<P extends IDataMap> implements IData, IObserver {
-	protected dataMap: P;
-	protected validityArray: Array<(value: P) => IValidationResult> = [];
-	private observers: Set<IObserver> = new Set<IObserver>();
+export class DataComposite<P extends IDataMap> implements IData, IObserver {
+    protected dataMap: P;
+    protected validityArray: Array<(data?: IDataLeafValues) => IValidationResult>/* | Promise<IValidationResult>> = []*/;
+    private observers: Set<IObserver> = new Set<IObserver>();
 
-	constructor(dataMap?: P) {
-		if (dataMap) {
-			this.dataMap = dataMap;
-			this.addSelfAsObserver();
-		}
-	}
+    constructor(dataMap?: P) {
+        if (dataMap) {
+            this.dataMap = dataMap;
+            this.addSelfAsObserver();
+        }
+    }
 
-	public getValue(): object {
-		const obj: any = {};
-		const keys: string[] = Object.keys(this.dataMap);
-		let key: string;
-		for (key of keys) {
-			if (this.dataMap[key]) {
-				obj[key] = this.dataMap[key].getValue();
-			}
-		}
-		return obj;
-	}
+    public getValue(): object {
+        const obj: any = {};
+        const keys: string[] = Object.keys(this.dataMap);
+        let key: string;
+        for (key of keys) {
+            if (this.dataMap[key]) {
+                obj[key] = this.dataMap[key].getValue();
+            }
+        }
+        return obj;
+    }
 
-	public getComponent(): P {
-		return this.dataMap;
-	}
+    public getComponent(): P {
+        return this.dataMap;
+    }
 
-	public set(dataMap: P, force?: boolean): IValidationResult/* | Promise<IValidationResult>*/ {
+    public set(dataMap: P, force?: boolean): Promise<IValidationResultItem> {
+        return this.isValid(dataMap).then((res: IValidationResultItem) => {
+            if (force || res.valid) {
+                this.dataMap = dataMap;
+                this.addSelfAsObserver();
+                if (force) {
+                    return res;
+                } else {
+                    return new ValidationResult(true).getResult();
+                }
+            }
+            return new ValidationResult(false).getResult();
+        });
+    }
 
-		if (force) {
-			this.dataMap = dataMap;
-			this.addSelfAsObserver();
-			return this.isValid();
-		}
+    public isValid(data?: IDataLeafValues): Promise<IValidationResultItem> {
+        const scope: DataComposite<P> = this;
 
-		if (this.isValid(dataMap)) {
-			this.dataMap = dataMap;
-			this.addSelfAsObserver();
-			return new ValidationResult(true);
-		}
+        return new Promise((f: (res: IValidationResultItem) => void, r: (res: IValidationResultItem) => void): void => {
+            if (!scope.validityArray || scope.validityArray.length < 1) {
+                f(new ValidationResult(true).getResult());
+                return;
+            }
 
-		return new ValidationResult(false);
-	}
+            let func: (data?: IDataLeafValues) => IValidationResult;
+            const asyncValidFuncs: Array<Promise<IValidationResultItem>> = [];
+            for (func of scope.validityArray) {
+                try {
+                    const validRes: IValidationResult = func(data);
+                    const validResItem: IValidationResultItem = validRes.getResult();
+                    if (validRes.isAsync) {
+                        asyncValidFuncs.push(validRes.runAsync());
 
-	public isValid(value?: P): IValidationResult/* | Promise<IValidationResult>*/ {
-		let v: P;
-		if (value) {
-			v = value;
-		} else {
-			v = this.dataMap;
-		}
+                        // regardless of whatever asynchronous operations are pending, return the first error found
+                    } else if (!validResItem.valid) {
+                        r(validResItem);
+                    }
+                } catch (err) {
+                    r(new ValidationResult(false, err.toString()).getResult());
+                }
+            }
+            // if no synchronous validation errors found, fetch each asynchronous validation result and check those
+            // as well
+            Promise.all(asyncValidFuncs).then((res: IValidationResultItem[]) => {
+                f(new ValidationResult(true).getResult());
+            }, (err: IValidationResultItem) => {
+                r(err);
+            });
+            f(new ValidationResult(true).getResult());
+        });
+    }
 
-		const keys: string[] = Object.keys(v);
+    public updateSelf(newValue?: any): void {
+        this.updateObservers();
+    }
 
-		// Check Leaves
-		let key: string;
-		for (key of keys) {
-			if (v[key]) {
-				const validRes: IValidationResult = v[key].isValid();
-				if (!validRes.valid) {
-					return validRes;
-				}
-			}
-		}
+    public updateObservers(): void {
+        const newValue: object = this.getValue();
+        let observer: IObserver;
+        for (observer of this.observers) {
+            observer.updateSelf(newValue);
+        }
+    }
 
-		// Check Validity Array
-		let func: (value: P) => IValidationResult;
-		for (func of this.validityArray) {
-			const validRes: IValidationResult = func(v);
-			if (!validRes.valid) {
-				return validRes;
-			}
-		}
-		return new ValidationResult(true);
-	}
+    public addObserver(observer: IObserver): void {
+        this.observers.add(observer);
+    }
 
-	public updateSelf(newValue?: any): void {
-		this.updateObservers();
-	}
+    // Must call with super
+    protected getParentValidityArray(): Array<(value: P) => IValidationResult>/* | Promise<IValidationResult>> */ {
+        return this.validityArray;
+    }
 
-	public updateObservers(): void {
-		const newValue: object = this.getValue();
-		let observer: IObserver;
-		for (observer of this.observers) {
-			observer.updateSelf(newValue);
-		}
-	}
-
-	public addObserver(observer: IObserver): void {
-		this.observers.add(observer);
-	}
-
-	// Must call with super
-	protected getParentValidityArray(): Array<(value: P) => IValidationResult> {
-		return this.validityArray;
-	}
-
-	private addSelfAsObserver(): void {
-		const keys: string[] = Object.keys(this.dataMap);
-		let key: string;
-		for (key of keys) {
-			if (this.dataMap[key]) {
-				this.dataMap[key].addObserver(this);
-			}
-		}
-	}
+    private addSelfAsObserver(): void {
+        const keys: string[] = Object.keys(this.dataMap);
+        let key: string;
+        for (key of keys) {
+            if (this.dataMap[key]) {
+                this.dataMap[key].addObserver(this);
+            }
+        }
+    }
 }
 
-export {DataComposite};
+export interface IDataLeafValues {
+	[key: string]: object;
+}

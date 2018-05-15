@@ -9,7 +9,7 @@ class GenericString extends DataLeaf<string> {
     private static spaceCharCode: number = " ".charCodeAt(0);
 
     protected static notEmpty(value: string): IValidationResult {
-        return new ValidationResult(value.length > 0, "This field cannot be empty.");
+        return new ValidationResult(value && value.trim().length > 0, "This field cannot be empty.");
     }
 
     protected static noWhiteSpace(value: string): IValidationResult {
