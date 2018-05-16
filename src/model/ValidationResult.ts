@@ -24,24 +24,26 @@ class ValidationResult implements IValidationResult {
 	}
 
 	// create the asynchronous validation function to be called later
-	public createAsync(func: (f: (res: IValidationResultItem) => void, r: (res: IValidationResultItem) => void) => void): void {
+	public createAsync(func: (f: (res: IValidationResultItem) => void, r: (err: IValidationResultItem) => void) => void): void {
 		this.isAsync = true;
 		// create the promise without attempting to resolve it
 		this.runAsync = (): Promise<IValidationResultItem> => {
-			return this.createPromise(func).then((res: IValidationResultItem) => {
-				// should always be a successful validation result but assign the errorMsg anyway just in case
-				this.valid = res.valid;
-				this.errorMsg = res.errorMsg;
-				return res;
-			}, (err: IValidationResultItem) => {
-				// TODO later, maybe handle special cases here where the api fails
-				this.valid = err.valid;
-				this.errorMsg = err.errorMsg;
-				return err;
+			return this.createPromise((f: (res: IValidationResultItem) => void, r: (res: IValidationResultItem) => void): void => {
+				this.createPromise(func).then((res: IValidationResultItem) => {
+					// should always be a successful validation result but assign the errorMsg anyway just in case
+					this.valid = res.valid;
+					this.errorMsg = res.errorMsg;
+					f(res);
+				}, (err: IValidationResultItem) => {
+					// TODO later, maybe handle special cases here where the api fails
+					this.valid = err.valid;
+					this.errorMsg = err.errorMsg;
+					r(err);
+				});
 			});
 		};
 	}
-	// private function to create the promise (mainly for the purpose of "storing" it but not resolving it until later)
+	// shorthand private function to create a promise
 	private createPromise(func: (f: (res: IValidationResultItem) => void, r: (res: IValidationResultItem) => void) => void): Promise<IValidationResultItem> {
 		return new Promise((f: (res: IValidationResultItem) => void, r: (res: IValidationResultItem) => void): void => {
 			func(f, r);
