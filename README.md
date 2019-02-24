@@ -102,29 +102,6 @@ const fullName: FullName = new FullName();
 fullName.set(fullNameMap);
 ```
 
-#### `isValid(value?: P): boolean | Promise<boolean>`
-
-#### `updateSelf(newValue?: any): void`
-
-#### `public updateObservers(): void`
-This will update all observers of this data type of the current value held.
-
-#### `public addObserver(observer: IObserver): void`
-Adds another observer to current instance of the DataComposite.
-
-### IObserver
-
-
-### IObservable
-
-## Creating Custom Data
-
-### Custom DataLeaf
-
-### Custom Composite
-
-## Extending Current Data
-
 ## Design Patterns
 The library uses two designs patterns extensively, which are the [composite-pattern](https://en.wikipedia.org/wiki/Composite_pattern) and [observer-pattern](https://en.wikipedia.org/wiki/Observer_pattern). These two design patterns are critical to the development and implementation of this library. In this library these two patterns are implemented loosely to the image below.
 
